@@ -11,6 +11,7 @@
 		3D7EF8C62B21AF3900EB6796 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7EF8C52B21AF3900EB6796 /* ContentView.swift */; };
 		3D7EF8C82B21AF3A00EB6796 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3D7EF8C72B21AF3A00EB6796 /* Assets.xcassets */; };
 		3D7EF8CB2B21AF3A00EB6796 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3D7EF8CA2B21AF3A00EB6796 /* Preview Assets.xcassets */; };
+		567E27652B21B49300A8E4FD /* MatchScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567E27642B21B49300A8E4FD /* MatchScheduleView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +20,7 @@
 		3D7EF8C52B21AF3900EB6796 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		3D7EF8C72B21AF3A00EB6796 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3D7EF8CA2B21AF3A00EB6796 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		567E27642B21B49300A8E4FD /* MatchScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchScheduleView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +55,7 @@
 			children = (
 				3D7EF8C32B21AF3900EB6796 /* SupportersAnchorApp.swift */,
 				3D7EF8C52B21AF3900EB6796 /* ContentView.swift */,
+				567E27642B21B49300A8E4FD /* MatchScheduleView.swift */,
 				3D7EF8C72B21AF3A00EB6796 /* Assets.xcassets */,
 				3D7EF8C92B21AF3A00EB6796 /* Preview Content */,
 			);
@@ -137,6 +140,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				567E27652B21B49300A8E4FD /* MatchScheduleView.swift in Sources */,
 				3D7EF8C62B21AF3900EB6796 /* ContentView.swift in Sources */,
 				3D7EF8C42B21AF3900EB6796 /* SupportersAnchorApp.swift in Sources */,
 			);
