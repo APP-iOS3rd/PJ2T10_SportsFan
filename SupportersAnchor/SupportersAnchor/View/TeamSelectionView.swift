@@ -8,12 +8,13 @@
 import SwiftUI
 
 struct TeamSelectionView: View {
+    @StateObject var teamSelectionVM = TeamSelectionViewModel()
     
     var gridItems: [GridItem] = [
-    GridItem(),
-    GridItem(),
-    GridItem()
-    ]
+                        GridItem(),
+                        GridItem(),
+                        GridItem()
+                    ]
     
     var body: some View {
         NavigationStack{
@@ -29,46 +30,26 @@ struct TeamSelectionView: View {
                     }
                     .padding()
                     
-                    LazyVGrid(columns: gridItems, spacing: 10){
-                        ForEach(1...20, id: \.self){ index in
+                    LazyVGrid(columns: gridItems){
+                        ForEach(teamSelectionVM.footballTeamList, id: \.self){ teams in
                             NavigationLink{
-                                //destination
-                                //MainView()
-                            } label:{
                                 
-                                VStack{
-                                    ZStack{
-                                        RoundedRectangle(cornerRadius: 25.0)
-                                            .frame(width: 110, height: 120)
-                                            .foregroundStyle(Color.gray1)
-                                        
-                                        
-                                        AsyncImage(url: URL(string:"")) { image in
-                                            
-                                        } placeholder: {
-                                            Image(systemName: "arrow.circlepath")
-                                                .resizable()
-                                                .aspectRatio(contentMode: .fit)
-                                                .foregroundStyle(.black)
-                                                .padding()
-                                        }
-
-                                    }
-                                    Text("name")
-                                        .font(.title3)
-                                        .foregroundStyle(.black)
-                                        .fontWeight(.regular)
-                                }
-                            }//NavigationLink
+                            }label:{
+                                TeamSelectionViewItem(url: teams.team.logo, name: teams.team.name)
+                            }
                         }//ForEach
                     }//LazyVGrid
-                }
-                
+                }//VStack
+               
                 .background(Color.graybackground)
                 .padding()
+                
             }//ScrollView
-            
+            .onAppear{
+                    teamSelectionVM.getTeams(leagueId: 39)
+            }
         }// NavigationStack
+        
         
     }
 }
