@@ -16,6 +16,7 @@
 		3D4AF4182B26E4F100D76FC5 /* LeagueSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4AF4132B26E4F100D76FC5 /* LeagueSelectionView.swift */; };
 		3D4AF41A2B26E55F00D76FC5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3D4AF4192B26E55F00D76FC5 /* Assets.xcassets */; };
 		3D4AF4202B26E65000D76FC5 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 3D4AF41F2B26E65000D76FC5 /* Alamofire */; };
+		3DF16D262B26FBEF0002F65E /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF16D252B26FBEF0002F65E /* OnboardingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		3D4AF4112B26E4F100D76FC5 /* TeamSelectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamSelectionView.swift; sourceTree = "<group>"; };
 		3D4AF4132B26E4F100D76FC5 /* LeagueSelectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeagueSelectionView.swift; sourceTree = "<group>"; };
 		3D4AF4192B26E55F00D76FC5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../../../../Desktop/PJ2T10_SportsFan/SupportersAnchor/SupportersAnchor/Assets.xcassets; sourceTree = "<group>"; };
+		3DF16D252B26FBEF0002F65E /* OnboardingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +83,7 @@
 		3D4AF41B2B26E5E000D76FC5 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				3DF16D252B26FBEF0002F65E /* OnboardingView.swift */,
 				3D4AF4132B26E4F100D76FC5 /* LeagueSelectionView.swift */,
 				3D4AF4102B26E4F100D76FC5 /* MatchDetailView.swift */,
 				3D4AF40F2B26E4F100D76FC5 /* MatchScheduleView.swift */,
@@ -187,6 +190,7 @@
 				3D4AF4022B26E4CD00D76FC5 /* SupportersAnchorApp.swift in Sources */,
 				3D4AF4152B26E4F100D76FC5 /* MatchDetailView.swift in Sources */,
 				3D4AF4162B26E4F100D76FC5 /* TeamSelectionView.swift in Sources */,
+				3DF16D262B26FBEF0002F65E /* OnboardingView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
