@@ -8,7 +8,6 @@
 import Foundation
 
 struct News: Codable, Hashable {
-    let id = UUID()
     let title: String
     let originallink: String
     let description: String
