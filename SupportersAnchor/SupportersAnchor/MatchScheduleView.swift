@@ -50,7 +50,8 @@ struct MatchScheduleView: View {
                 }
             }
         }
-    }}
+    }
+}
 
 struct MatchScheduleItem: View {
     let match: Dummy
