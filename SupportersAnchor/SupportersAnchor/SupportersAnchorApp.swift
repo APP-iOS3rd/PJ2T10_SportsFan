@@ -11,9 +11,7 @@ import SwiftUI
 struct SupportersAnchorApp: App {
     var body: some Scene {
         WindowGroup {
-feature_League_Selection
-            LeagueSelectionView()
- develop
+            TeamSelectionView()
         }
     }
 }
