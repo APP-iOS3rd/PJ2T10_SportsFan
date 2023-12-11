@@ -46,11 +46,34 @@ struct MatchScheduleView: View {
                         }
                         MatchScheduleItem(match: match)
                     }
-                    .padding()
+                    .padding() 
                 }
             }
         }
-    }}
+    }
+}
+
+//struct MatchScheduleView2: View {
+//    let matches: [Fixture]
+//    
+//    var body: some View {
+//        NavigationView {
+//            ScrollView {
+//                VStack(alignment: .center, spacing: 10) {
+////                    ForEach(matches, id: \.team1) { match in
+////                        HStack(alignment: .center, spacing: 0) {
+////                            //Text(match.date)
+////                                //.font(.headline)
+////                            //Spacer()
+////                        }
+////                        MatchScheduleItem(match: match)
+////                    }
+////                    .padding()
+//                }
+//            }
+//        }
+//    }
+//}
 
 struct MatchScheduleItem: View {
     let match: Dummy
@@ -67,11 +90,15 @@ struct MatchScheduleItem: View {
                     .lineSpacing(4)
             }
             
+            Spacer()
+            
             if let score = match.score {
                 Text(score)
             } else {
                 Text("vs")
             }
+            
+            Spacer()
             
             VStack(alignment: .center, spacing: 10) {
                 RoundedRectangle(cornerRadius: 25.0)
