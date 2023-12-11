@@ -15,7 +15,11 @@
 		3D4AF4162B26E4F100D76FC5 /* TeamSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4AF4112B26E4F100D76FC5 /* TeamSelectionView.swift */; };
 		3D4AF4182B26E4F100D76FC5 /* LeagueSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4AF4132B26E4F100D76FC5 /* LeagueSelectionView.swift */; };
 		3D4AF4202B26E65000D76FC5 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 3D4AF41F2B26E65000D76FC5 /* Alamofire */; };
-		3D580A7E2B2717C80062764F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3D580A7D2B2717C80062764F /* Assets.xcassets */; };
+		3D4DF9AF2B27EA6200F7C655 /* FootballTeams.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4DF9AE2B27EA6200F7C655 /* FootballTeams.swift */; };
+		3D4DF9B12B27EABE00F7C655 /* TeamSelectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4DF9B02B27EABE00F7C655 /* TeamSelectionViewModel.swift */; };
+		3D4DF9B32B27FDB200F7C655 /* TeamSelectionViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4DF9B22B27FDB200F7C655 /* TeamSelectionViewItem.swift */; };
+		3D83B2712B2828960025380B /* FootballLeagues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D83B2702B2828960025380B /* FootballLeagues.swift */; };
+		3D83B2732B2829470025380B /* LeagueSelectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D83B2722B2829470025380B /* LeagueSelectionViewModel.swift */; };
 		3DF16D262B26FBEF0002F65E /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF16D252B26FBEF0002F65E /* OnboardingView.swift */; };
 /* End PBXBuildFile section */
 
@@ -28,7 +32,12 @@
 		3D4AF4102B26E4F100D76FC5 /* MatchDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchDetailView.swift; sourceTree = "<group>"; };
 		3D4AF4112B26E4F100D76FC5 /* TeamSelectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamSelectionView.swift; sourceTree = "<group>"; };
 		3D4AF4132B26E4F100D76FC5 /* LeagueSelectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeagueSelectionView.swift; sourceTree = "<group>"; };
+		3D4DF9AE2B27EA6200F7C655 /* FootballTeams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FootballTeams.swift; sourceTree = "<group>"; };
+		3D4DF9B02B27EABE00F7C655 /* TeamSelectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamSelectionViewModel.swift; sourceTree = "<group>"; };
+		3D4DF9B22B27FDB200F7C655 /* TeamSelectionViewItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamSelectionViewItem.swift; sourceTree = "<group>"; };
 		3D580A7D2B2717C80062764F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = SupportersAnchor/Assets.xcassets; sourceTree = SOURCE_ROOT; };
+		3D83B2702B2828960025380B /* FootballLeagues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FootballLeagues.swift; sourceTree = "<group>"; };
+		3D83B2722B2829470025380B /* LeagueSelectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeagueSelectionViewModel.swift; sourceTree = "<group>"; };
 		3DF16D252B26FBEF0002F65E /* OnboardingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -63,12 +72,12 @@
 		3D4AF4002B26E4CD00D76FC5 /* SupportersAnchor */ = {
 			isa = PBXGroup;
 			children = (
-				3D580A7D2B2717C80062764F /* Assets.xcassets */,
 				3D4AF4012B26E4CD00D76FC5 /* SupportersAnchorApp.swift */,
 				3D4AF4032B26E4CD00D76FC5 /* ContentView.swift */,
 				3D4AF41D2B26E5FC00D76FC5 /* ViewModel */,
 				3D4AF41C2B26E5F200D76FC5 /* Model */,
 				3D4AF41B2B26E5E000D76FC5 /* View */,
+				3D580A7D2B2717C80062764F /* Assets.xcassets */,
 				3D4AF4072B26E4CE00D76FC5 /* Preview Content */,
 			);
 			path = SupportersAnchor;
@@ -90,6 +99,7 @@
 				3D4AF4102B26E4F100D76FC5 /* MatchDetailView.swift */,
 				3D4AF40F2B26E4F100D76FC5 /* MatchScheduleView.swift */,
 				3D4AF4112B26E4F100D76FC5 /* TeamSelectionView.swift */,
+				3D4DF9B22B27FDB200F7C655 /* TeamSelectionViewItem.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -97,6 +107,8 @@
 		3D4AF41C2B26E5F200D76FC5 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				3D4DF9AE2B27EA6200F7C655 /* FootballTeams.swift */,
+				3D83B2702B2828960025380B /* FootballLeagues.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -104,6 +116,8 @@
 		3D4AF41D2B26E5FC00D76FC5 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				3D4DF9B02B27EABE00F7C655 /* TeamSelectionViewModel.swift */,
+				3D83B2722B2829470025380B /* LeagueSelectionViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -172,7 +186,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3D580A7E2B2717C80062764F /* Assets.xcassets in Resources */,
 				3D4AF4092B26E4CE00D76FC5 /* Preview Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -184,13 +197,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3D4DF9B12B27EABE00F7C655 /* TeamSelectionViewModel.swift in Sources */,
 				3D4AF4142B26E4F100D76FC5 /* MatchScheduleView.swift in Sources */,
 				3D4AF4182B26E4F100D76FC5 /* LeagueSelectionView.swift in Sources */,
+				3D4DF9B32B27FDB200F7C655 /* TeamSelectionViewItem.swift in Sources */,
 				3D4AF4042B26E4CD00D76FC5 /* ContentView.swift in Sources */,
+				3D4DF9AF2B27EA6200F7C655 /* FootballTeams.swift in Sources */,
 				3D4AF4022B26E4CD00D76FC5 /* SupportersAnchorApp.swift in Sources */,
 				3D4AF4152B26E4F100D76FC5 /* MatchDetailView.swift in Sources */,
 				3D4AF4162B26E4F100D76FC5 /* TeamSelectionView.swift in Sources */,
 				3DF16D262B26FBEF0002F65E /* OnboardingView.swift in Sources */,
+				3D83B2732B2829470025380B /* LeagueSelectionViewModel.swift in Sources */,
+				3D83B2712B2828960025380B /* FootballLeagues.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
