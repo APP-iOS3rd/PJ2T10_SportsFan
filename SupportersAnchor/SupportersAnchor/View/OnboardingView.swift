@@ -26,7 +26,7 @@ struct OnboardingView: View {
                         .multilineTextAlignment(.center)
                     
                     Spacer()
-                    NavigationLink(destination: OnboardingView1()){
+                    NavigationLink(destination: OnboardingView1()/*.navigationBarBackButtonHidden(true)*/){
                         Text("다음")
                             .font(.system(size: 30, weight: .bold))
                             .padding()
