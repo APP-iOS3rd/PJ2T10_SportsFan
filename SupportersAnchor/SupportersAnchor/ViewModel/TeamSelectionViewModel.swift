@@ -10,7 +10,9 @@ import Alamofire
 
 class TeamSelectionViewModel : ObservableObject{
     
+
     @Published var footballTeamList  = [TeamResponse]()
+
     
     
     func getTeams(leagueId: Int){
