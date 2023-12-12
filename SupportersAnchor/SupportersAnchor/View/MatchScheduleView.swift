@@ -7,82 +7,174 @@
 
 import SwiftUI
 
-struct Dummy {
-    let team1:String
-    let team2:String
-    let score:String?
-    let date:String
-    
-    init(team1: String, team2: String, score: String?,date: String) {
-        self.team1 = team1
-        self.team2 = team2
-        self.score = score
-        self.date = date
-    }
-    
+struct MatchScheduleView: View {
+    @StateObject private var viewModel = MatchScheduleViewModel()
+    @State private var leagueID: String = "39"
+    @State private var teamID: String = "33"
 
-    
-    static func getDummy() -> [Dummy] {
-        let dummyData: [Dummy] = [
-            Dummy(team1: "맨시티", team2: "토트넘", score: nil,date: "12.11 월"),
-            Dummy(team1: "토트넘", team2: "아스톤 빌라", score: nil, date: "12.24 금")
-        ]
-        return dummyData
+    var body: some View {
+        NavigationView {
+            VStack(alignment: .leading, spacing: 5) {
+                // MARK: - header
+                HStack(alignment: .center, spacing: 5) {
+                    Text("이번 주 매치")
+                        .font(.title)
+                        .bold()
+                    Spacer()
+                    
+                }.padding(.horizontal)
+                
+                Divider()
+                
+                // MARK: - 이번주 매치
+                if let match = viewModel.fixtures.first {
+                    MatchScheduleItem(fixture: match)
+                }
+                
+                // MARK: - header
+                HStack(alignment: .center, spacing: 5) {
+                    Text("경기일정")
+                        .font(.title)
+                        .bold()
+                    
+                    Spacer()
+                    
+                    NavigationLink(destination: MatchScheduleList()
+                        .environmentObject(viewModel)
+                        .navigationTitle("경기일정")
+                    ) {
+                        Text("더 보기")
+                            .bold()
+                            .foregroundColor(.black)
+                    }
+                }.padding(.horizontal)
+                Divider()
+                
+                // MARK: - 경기일정
+                ForEach(viewModel.fixtures.prefix(4), id: \.fixture.id) { fixture in
+                    HStack(alignment: .center, spacing: 5) {
+                        Text(fixture.fixture.date.formatDateString())
+                            .font(.headline)
+                        
+                        fetchImage(url: fixture.teams.home.logo)
+                        Text(fixture.teams.home.name)
+                        
+                        fetchImage(url: fixture.teams.away.logo)
+                        Text(fixture.teams.away.name)
+                    }
+                }
+                .padding()
+            }
+        }
+        .onAppear {
+            viewModel.moreFetch(leagueID: leagueID, season: "2023", teamID: teamID)
+        }
     }
+    
+    // MARK: fetchImage
+    func fetchImage(url: String) -> some View {
+        AsyncImage(url: URL(string: url)) { image in
+            image.resizable()
+        } placeholder: {
+            ProgressView()
+        }
+        .frame(width: 20, height: 20)}
 }
 
-struct MatchScheduleView: View {
-    private let matches = Dummy.getDummy()
+
+// MARK: - MatchScheduleList
+struct MatchScheduleList: View {
+    @EnvironmentObject private var viewModel: MatchScheduleViewModel
     
     var body: some View {
         NavigationView {
             ScrollView {
-                VStack(alignment: .center, spacing: 10) {
-                    ForEach(matches, id: \.team1) { match in
-                        HStack(alignment: .center, spacing: 0) {
-                            Text(match.date)
-                                .font(.headline)
-                            Spacer()
-                        }
-                        MatchScheduleItem(match: match)
+                ForEach(viewModel.fixtures.prefix(4), id: \.fixture.id) { match in
+                    Text(match.fixture.date)
+                    
+                    
+                    NavigationLink(destination: MatchSatis()) {
+                        MatchScheduleItem(fixture: match)
+//                            .onTapGesture {
+//                                viewModel.selectFixture(fixture: match)
+//                            }
                     }
-                    .padding()
+                    
+                    Divider()
                 }
+                .padding()
+                
             }
         }
     }
 }
 
+// MARK: - MatchScheduleItem
+// 리스트 셀 또는 한 경기 정보
 struct MatchScheduleItem: View {
-    let match: Dummy
+    let fixture: FixtureData
     
     var body: some View {
-        HStack(alignment: .center, spacing: 10) {
-            
-            VStack(alignment: .center, spacing: 10) {
-                RoundedRectangle(cornerRadius: 25.0)
-                    .frame(width: 118, height: 138)
-                Text(match.team1)
+        VStack(alignment: .center, spacing: 10) {
+            HStack(alignment: .center, spacing: 0) {
+                Text(fixture.fixture.date)
                     .font(.headline)
-                    .lineLimit(1)
-                    .lineSpacing(4)
+                Spacer()
             }
             
-            if let score = match.score {
-                Text(score)
-            } else {
-                Text("vs")
-            }
-            
-            VStack(alignment: .center, spacing: 10) {
-                RoundedRectangle(cornerRadius: 25.0)
-                    .frame(width: 118, height: 138)
-                Text(match.team1)
-                    .font(.headline)
-                    .lineLimit(1)
-                    .lineSpacing(4)
+            HStack(alignment: .center, spacing: 10) {
+                VStack(alignment: .center, spacing: 15) {
+                    fetchImage(url: fixture.teams.home.logo)
+                    Text("\(fixture.teams.home.name)")
+                }
+                
+                Spacer()
+                
+                VStack(alignment: .center, spacing: 15) {
+                    fetchImage(url: fixture.teams.away.logo)
+                    Text("\(fixture.teams.away.name)")
+                }
             }
         }
+        .padding()
+    }
+    
+    func fetchImage(url: String) -> some View {
+        AsyncImage(url: URL(string: url)) { image in
+            image.resizable()
+        } placeholder: {
+            ProgressView()
+        }
+        .frame(width: 96, height: 129)
+    }
+}
+
+struct MatchSatis: View {
+    @StateObject private var viewModel = MatchScheduleViewModel()
+
+    var body: some View {
+        VStack(alignment: .center, spacing: 10) {
+            if let ele = viewModel.selectedDetails.first {
+                fetchImage(url: ele.team.logo)
+                Text(ele.team.name)
+                
+                if let home = ele.statistics.first {
+                    Text(home.type ?? "")
+                }
+            }
+        }.onAppear {
+            viewModel.fetchStatisticsData(fixtureID: "1035046")
+        }
+        .padding()
+    }
+
+    func fetchImage(url: String) -> some View {
+        AsyncImage(url: URL(string: url)) { image in
+            image.resizable()
+        } placeholder: {
+            ProgressView()
+        }
+        .frame(width: 96, height: 129)
     }
 }
 
