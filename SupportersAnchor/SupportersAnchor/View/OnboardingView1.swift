@@ -1,47 +1,51 @@
 //
-//  OnboardingView.swift
+//  OnboardingView1.swift
 //  SupportersAnchor
 //
-//  Created by 박호건 on 12/9/23.
+//  Created by 박호건 on 12/12/23.
 //
 
 import SwiftUI
 
-struct OnboardingView: View {
+struct OnboardingView1: View {
     var body: some View {
         NavigationView{
-        ZStack {
-            Image("BackgroundImage")
-                .resizable()
-                .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
-            VStack {
+            ZStack {
+                Image("BackgroundImage")
+                    .resizable()
+                    .ignoresSafeArea(.all)
+                VStack {
                     Spacer()
                     Text("Ducks")
                         .font(.system(size: 50, weight: .bold))
                         .foregroundColor(.black)
-                    Text("해외축구 서포터즈를 위한 정보 앱")
+                    Spacer()
+                    Text("우린 서포터즈입니다.")
+                        .font(.system(size: 30, weight: .bold))
+                        .foregroundColor(.black)
+                    Text("좋아하는 축구팀을 팔로우 하세요!")
                         .padding()
                         .font(.system(size: 30, weight: .bold))
                         .foregroundColor(.black)
                         .multilineTextAlignment(.center)
                     
                     Spacer()
-                    NavigationLink(destination: OnboardingView1()){
-                        Text("다음")
-                            .font(.system(size: 30, weight: .bold))
+                    NavigationLink(destination: OnboardingView()) {
+                        Text("시작하기")
                             .padding()
-                            .frame(width: 200)
+                            .font(.system(size: 30, weight: .bold))
                             .foregroundColor(.white)
+                            .frame(width: 200)
                             .background(.black)
                             .cornerRadius(10)
                     }
-                    
                 }
             }
         }
     }
 }
 
+
 #Preview {
-    OnboardingView()
+    OnboardingView1()
 }

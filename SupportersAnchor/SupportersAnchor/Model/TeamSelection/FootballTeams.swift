@@ -18,12 +18,12 @@ struct FootballTeams: Codable {
 
 // MARK: - Response
 struct TeamResponse: Codable, Hashable {
-    let team: Team
-    let venue: Venue
+    let team: SelectTeam
+    let venue: SelectVenue
 }
 
 // MARK: - Team
-struct Team: Codable, Hashable {
+struct SelectTeam: Codable, Hashable {
     let id: Int
     let name, code: String
     let country: String
@@ -33,7 +33,7 @@ struct Team: Codable, Hashable {
 }
 
 // MARK: - Venue
-struct Venue: Codable, Hashable {
+struct SelectVenue: Codable, Hashable {
     let id: Int
     let name, address, city: String
     let capacity: Int

@@ -29,7 +29,7 @@ struct Paging: Codable {
 
 struct FixtureData: Codable {
     var fixture: Fixture
-    let league: League
+    let league: FixtureLeague
     let teams: Teams
     let goals: Goals
     let score: Score
@@ -38,43 +38,12 @@ struct FixtureData: Codable {
         case fixture, league, teams, goals, score
     }
     
-    init() {
-        self.fixture = Fixture(
-            id: 867954,
-            referee: "P. Tierney",
-            timezone: "UTC",
-            date: "2022-08-07T13:00:00+00:00",
-            timestamp: 1659877200,
-            periods: Periods(first: 1659877200, second: 1659880800),
-            venue: Venue(id: 556, name: "Old Trafford", city: "Manchester"),
-            status: Status(long: "Match Finished", short: "FT", elapsed: 90)
-        )
-        self.league = League(
-            id: 39,
-            name: "Premier League",
-            country: "England",
-            logo: "https://media-4.api-sports.io/football/leagues/39.png",
-            flag: "https://media-4.api-sports.io/flags/gb.svg",
-            season: 2022,
-            round: "Regular Season - 1"
-        )
-        self.teams = Teams(
-            home: Team(id: 33, name: "Manchester United", logo: "https://media-4.api-sports.io/football/teams/33.png", winner: false),
-            away: Team(id: 51, name: "Brighton", logo: "https://media-4.api-sports.io/football/teams/51.png", winner: true)
-        )
-        self.goals =  Goals(home: 1, away: 2)
-        self.score = Score(
-            halftime: Score.Halftime(home: 0, away: 0),
-            fulltime: Score.Fulltime(home: 0, away: 0),
-            extratime: nil,
-            penalty: nil
-        )
-    }
+    
     
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         fixture = try container.decode(Fixture.self, forKey: .fixture)
-        league = try container.decode(League.self, forKey: .league)
+        league = try container.decode(FixtureLeague.self, forKey: .league)
         teams = try container.decode(Teams.self, forKey: .teams)
         goals = try container.decode(Goals.self, forKey: .goals)
         score = try container.decode(Score.self, forKey: .score)
@@ -110,7 +79,7 @@ struct Status: Codable {
     let elapsed: Int?
 }
 
-struct League: Codable {
+struct FixtureLeague: Codable {
     let id: Int
     let name: String
     let country: String
