@@ -13,7 +13,7 @@ struct NewsListView: View {
     @State private var selectedNewsURL: String?
 
     func removeTags(_ text: String) -> String {
-        var processedText = text.replacingOccurrences(of: #"<(\/)?([a-zA-Z]*)(\s[a-zA-Z]*=[^>]*)?(\s)*(\/)?>"#, with: "", options: .regularExpression, range: nil).replacingOccurrences(of: "&quot;", with: "\"")
+        let processedText = text.replacingOccurrences(of: #"<(\/)?([a-zA-Z]*)(\s[a-zA-Z]*=[^>]*)?(\s)*(\/)?>"#, with: "", options: .regularExpression, range: nil).replacingOccurrences(of: "&quot;", with: "\"")
         
         return processedText
     }

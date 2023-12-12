@@ -30,7 +30,7 @@ struct OnboardingView1: View {
                         .multilineTextAlignment(.center)
                     
                     Spacer()
-                    NavigationLink(destination: OnboardingView()) {
+                    NavigationLink(destination: LeagueSelectionView().navigationBarBackButtonHidden(true)) {
                         Text("시작하기")
                             .padding()
                             .font(.system(size: 30, weight: .bold))
@@ -39,6 +39,7 @@ struct OnboardingView1: View {
                             .background(.black)
                             .cornerRadius(10)
                     }
+                    
                 }
             }
         }

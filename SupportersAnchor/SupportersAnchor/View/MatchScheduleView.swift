@@ -9,9 +9,10 @@ import SwiftUI
 
 struct MatchScheduleView: View {
     @StateObject private var viewModel = MatchScheduleViewModel()
-    @State private var leagueID: String = "39"
-    @State private var teamID: String = "33"
-
+    
+    var leagueID: String
+    var teamID: String
+    
     var body: some View {
         NavigationView {
             VStack(alignment: .leading, spacing: 5) {
@@ -179,5 +180,5 @@ struct MatchSatis: View {
 }
 
 #Preview {
-    MatchScheduleView()
+    MatchScheduleView(leagueID: "33", teamID: "39")
 }
