@@ -18,8 +18,10 @@
 		3D4DF9AF2B27EA6200F7C655 /* FootballTeams.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4DF9AE2B27EA6200F7C655 /* FootballTeams.swift */; };
 		3D4DF9B12B27EABE00F7C655 /* TeamSelectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4DF9B02B27EABE00F7C655 /* TeamSelectionViewModel.swift */; };
 		3D4DF9B32B27FDB200F7C655 /* TeamSelectionViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4DF9B22B27FDB200F7C655 /* TeamSelectionViewItem.swift */; };
+
 		3D83B2712B2828960025380B /* FootballLeagues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D83B2702B2828960025380B /* FootballLeagues.swift */; };
 		3D83B2732B2829470025380B /* LeagueSelectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D83B2722B2829470025380B /* LeagueSelectionViewModel.swift */; };
+
 		3DF16D262B26FBEF0002F65E /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF16D252B26FBEF0002F65E /* OnboardingView.swift */; };
 /* End PBXBuildFile section */
 
@@ -108,7 +110,9 @@
 			isa = PBXGroup;
 			children = (
 				3D4DF9AE2B27EA6200F7C655 /* FootballTeams.swift */,
+
 				3D83B2702B2828960025380B /* FootballLeagues.swift */,
+
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -117,7 +121,9 @@
 			isa = PBXGroup;
 			children = (
 				3D4DF9B02B27EABE00F7C655 /* TeamSelectionViewModel.swift */,
+
 				3D83B2722B2829470025380B /* LeagueSelectionViewModel.swift */,
+
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
