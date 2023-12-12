@@ -2,7 +2,7 @@
 //  SupportersAnchorApp.swift
 //  SupportersAnchor
 //
-//  Created by 최준현 on 12/11/23.
+//  Created by 최준현 on 12/7/23.
 //
 
 import SwiftUI
@@ -11,7 +11,9 @@ import SwiftUI
 struct SupportersAnchorApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+feature_League_Selection
+            LeagueSelectionView()
+ develop
         }
     }
 }
