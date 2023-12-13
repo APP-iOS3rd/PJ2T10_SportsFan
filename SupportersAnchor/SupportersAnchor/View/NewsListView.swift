@@ -36,7 +36,7 @@ struct NewsListView: View {
                                       }
                 }
             }.onAppear() {
-                newsAPI.requestSearchNewsList()
+                newsAPI.requestSearchNewsList(query: "Manchester United")
             }
         }
 
