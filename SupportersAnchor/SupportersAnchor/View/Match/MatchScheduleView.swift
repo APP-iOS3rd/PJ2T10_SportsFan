@@ -16,8 +16,32 @@ struct MatchScheduleView: View {
     var leagueID: String
     var teamID: String
     
+    var ourTeamName: String {
+        if let fixture = matchAPI.fixtures.first {
+            if String(fixture.teams.home.id) == teamID {
+                return String(fixture.teams.home.name)
+            } else {
+                return String(fixture.teams.away.name)
+            }
+        }
+        return ""
+    }
+    
+    var ourTeamUrl: String {
+        if let fixture = matchAPI.fixtures.first {
+            if String(fixture.teams.home.id) == teamID {
+                return String(fixture.teams.home.logo)
+            } else {
+                return String(fixture.teams.away.logo)
+            }
+        }
+        return ""
+    }
+    
     var newsQuery: String {
         switch teamID {
+        case "47":
+            return "토트넘"
         case "33":
             return "맨유"
         case "39":
@@ -30,12 +54,35 @@ struct MatchScheduleView: View {
     var body: some View {
         NavigationView {
             VStack(alignment: .leading, spacing: 15) {
+                HStack {
+                    ZStack{
+                        RoundedRectangle(cornerRadius: 25.0)
+                            .foregroundStyle(Color.white)
+                        AsyncImage(url: URL(string: ourTeamUrl)) { image in
+                            image.resizable()
+                        } placeholder: {
+                            Image(systemName: "arrow.circlepath")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .padding()
+                        }
+                    }
+                    .frame(width: 30, height: 30)
+                    
+                    Text(ourTeamName)
+                        .font(.title)
+                        .bold()
+                        .lineLimit(1)
+                }
+                .padding()
+
                 recentMatch() // 최근 경기
                 
                 mainMatchSchedule() // 경기 일정
                 
                 mainNews() // 뉴스
             }
+            .padding()
         }
         .onAppear {
             matchAPI.moreFetch(leagueID: leagueID, season: "2023", teamID: teamID)
@@ -63,7 +110,7 @@ struct MatchScheduleView: View {
         } else {
             RoundedRectangle(cornerRadius: 25.0)
                 .foregroundStyle(Color.white)
-                .frame(width: 200, height: 100)
+                .frame(width: 100, height: 100)
         }
     }
     
@@ -114,7 +161,7 @@ struct MatchScheduleView: View {
         } else {
             RoundedRectangle(cornerRadius: 25.0)
                 .foregroundStyle(Color.white)
-                .frame(width: 200, height: 100)
+                .frame(width: 100, height: 100)
         }
     }
     
