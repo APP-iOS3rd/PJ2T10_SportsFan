@@ -15,17 +15,22 @@ class APIClient {
     private let statisticsBaseURL = "https://api-football-v1.p.rapidapi.com/v3/fixtures/statistics"
 
     private let headers: HTTPHeaders = [
-        "X-RapidAPI-Key": "5a037acc15msh4cbb6c53e88088bp11fc3ejsn93a49e9e121c",
+        "X-RapidAPI-Key": "",
         "X-RapidAPI-Host": "api-football-v1.p.rapidapi.com"
     ]
     
     // MARK: - fetchFixtures
-    func fetchFixtures(leagueID: String, season: String, teamID: String, completion: @escaping (Result<FixtureResponse, AFError>) -> Void) {
-        let parameters: [String: Any] = [
+    func fetchFixtures(leagueID: String, season: String, teamID: String, from: String? = nil, to: String? = nil, completion: @escaping (Result<FixtureResponse, AFError>) -> Void) {
+        var parameters: [String: Any] = [
             "league": leagueID,
             "season": season,
             "team": teamID
         ]
+        
+        if let fromDate = from, let toDate = to {
+            parameters["from"] = fromDate
+            parameters["to"] = toDate
+        }
         
         AF.request(fixturesBaseURL, method: .get, parameters: parameters, headers: headers)
             .validate()

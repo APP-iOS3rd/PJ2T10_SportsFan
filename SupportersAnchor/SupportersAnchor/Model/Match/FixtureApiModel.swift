@@ -38,7 +38,33 @@ struct FixtureData: Codable {
         case fixture, league, teams, goals, score
     }
     
-    
+    init() {
+        self.fixture = Fixture(
+           id: 867954,
+           referee: "P. Tierney",
+           timezone: "UTC",
+           date: "2022-08-07T13:00:00+00:00",
+           timestamp: 1659877200,
+           periods: Periods(first: 1659877200, second: 1659880800),
+           venue: Venue(id: 556, name: "Old Trafford", city: "Manchester"),
+           status: Status(long: "Match Finished", short: "FT", elapsed: 90)
+       )
+        self.league = FixtureLeague(
+            id: 39,
+            name: "Premier League",
+            country: "England",
+            logo: "https://media-4.api-sports.io/football/leagues/39.png",
+            flag: "https://media-4.api-sports.io/flags/gb.svg",
+            season: 2022,
+            round: "Regular Season - 1"
+        )
+        self.teams = Teams(
+            home: Team(id: 33, name: "Manchester United", logo: "https://media-4.api-sports.io/football/teams/33.png", winner: false),
+            away: Team(id: 51, name: "Brighton", logo: "https://media-4.api-sports.io/football/teams/51.png", winner: true)
+        )
+        self.goals =  Goals(home: 1, away: 2)
+        self.score = Score(halftime: nil, fulltime: nil, extratime: nil, penalty: nil)
+    }
     
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
