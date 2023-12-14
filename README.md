@@ -81,17 +81,36 @@
   
 
 ## 5. 기술 스택
+<br/>
 
 - **사용한 기술 및 언어**
     - Swift, SwiftUI, Git, REST API, Alamofire
+    <br/>
+    
 - **개발 환경**
     - Xcode 15
+  <br/>
+  
 - **API**
-    - Rapid FootBall API
-    - [API 문서](https://www.api-football.com/documentation-v3#section/Introduction)
-
+    - Rapid FootBall API: [Rapid FootBall API 문서](https://www.api-football.com/documentation-v3#section/Introduction)
+      <br/>
+      -  리그 선택: [leagues](https://www.api-football.com/documentation-v3#tag/Leagues/operation/get-leagues)
+      <br/>
+      -  팀 선택: [teams](https://www.api-football.com/documentation-v3#tag/Teams/operation/get-teams)
+      <br/>
+      -  경기일정: [fixtures](https://www.api-football.com/documentation-v3#tag/Fixtures/operation/get-fixtures)
+      <br/>
+      -  경기정보: [events](https://www.api-football.com/documentation-v3#tag/Fixtures/operation/get-fixtures-events)
+      <br/>
+      
+    - newsapi: [newsapi API 문서](https://newsapi.org/)
+      <br/>
+      - 뉴스기사: [everything](https://newsapi.org/docs/endpoints/everything)
+      <br/>
 
 ## 6. etc
+<br/>
+
 [노션](https://www.notion.so/LAB-10-035cf37f66824ac2b702bb10cc28319f?pvs=4)
 <br/>
 
