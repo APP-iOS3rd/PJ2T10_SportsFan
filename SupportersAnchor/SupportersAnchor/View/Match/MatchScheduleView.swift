@@ -24,7 +24,7 @@ struct MatchScheduleView: View {
                 return String(fixture.teams.away.name)
             }
         }
-        return ""
+        return "해외축구"
     }
     
     var ourTeamUrl: String {
@@ -47,7 +47,7 @@ struct MatchScheduleView: View {
         case "39":
             return "울버햄프턴 원더러스"
         default:
-            return  "EPL"
+            return  "해외축구"
         }
     }
     
@@ -81,12 +81,14 @@ struct MatchScheduleView: View {
                 mainMatchSchedule() // 경기 일정
                 
                 mainNews() // 뉴스
+                    .onAppear {
+                        newsAPI.requestSearchNewsList(query: ourTeamName)
+                    }
             }
             .padding()
         }
         .onAppear {
             matchAPI.moreFetch(leagueID: leagueID, season: "2023", teamID: teamID)
-            newsAPI.requestSearchNewsList(query: newsQuery)
         }
     }
     
@@ -95,7 +97,7 @@ struct MatchScheduleView: View {
     private func recentMatch() -> some View {
         // MARK: - header
         HStack(alignment: .center, spacing: 5) {
-            Text("이번 주 매치")
+            Text("최근 매치")
                 .font(.title)
                 .bold()
             Spacer()
@@ -176,9 +178,8 @@ struct MatchScheduleView: View {
             
             Spacer()
             
-            NavigationLink(destination: NewsListView()
-            
-            ) {
+            NavigationLink(destination: NewsListView(qurey: ourTeamName)
+                .environmentObject(newsAPI)) {
                 Text("더 보기")
                     .bold()
                     .foregroundColor(.black)
@@ -222,50 +223,6 @@ struct MatchScheduleView: View {
     }
     
 }
-
-//struct MatchSatis: View {
-//    @EnvironmentObject private var viewModel: MatchScheduleViewModel
-//    
-//    var body: some View {
-//        VStack(alignment: .center, spacing: 10) {
-//            if let home = viewModel.selectedFixtureStatistics.first, let away = viewModel.selectedFixtureStatistics.last {
-//                HStack {
-//                    fetchImage(url: home.team.logo)
-//                    
-//                    fetchImage(url: away.team.logo)
-//                }
-//                
-//                HStack {
-//                    //                    ForEach(home.statistics, id: \.type) { stat in
-//                    //                        Text(stat.type)
-//                    //                    }
-//                    //
-//                    //                    ForEach(away.statistics, id: \.type) { stat in
-//                    //                        Text(stat.type)
-//                    //                    }
-//                }
-//            } else {
-//                Text("통계 미제공")
-//            }
-//        }
-//    }
-//    
-//    func fetchImage(url: String) -> some View {
-//        ZStack{
-//            RoundedRectangle(cornerRadius: 25.0)
-//                .foregroundStyle(Color.white)
-//            AsyncImage(url: URL(string: url)) { image in
-//                image.resizable()
-//            } placeholder: {
-//                Image(systemName: "arrow.circlepath")
-//                    .resizable()
-//                    .aspectRatio(contentMode: .fit)
-//                    .padding()
-//            }
-//        }
-//        .frame(width: 96, height: 129)
-//    }
-//}
 
 #Preview {
     MatchScheduleView(leagueID: "39", teamID: "33")

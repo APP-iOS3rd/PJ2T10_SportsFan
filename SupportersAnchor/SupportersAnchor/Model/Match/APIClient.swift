@@ -13,9 +13,10 @@ class APIClient {
     
     private let fixturesBaseURL = "https://api-football-v1.p.rapidapi.com/v3/fixtures"
     private let statisticsBaseURL = "https://api-football-v1.p.rapidapi.com/v3/fixtures/statistics"
+    private let eventBaseURL = "https://api-football-v1.p.rapidapi.com/v3/fixtures/events"
 
     private let headers: HTTPHeaders = [
-        "X-RapidAPI-Key": "",
+        "X-RapidAPI-Key": "", 
         "X-RapidAPI-Host": "api-football-v1.p.rapidapi.com"
     ]
     
@@ -49,7 +50,19 @@ class APIClient {
                  completion(response.result)
              }
      }
+    
+    // MARK: - fetchEvent
+    func fetchEvent(fixtureID: String, completion: @escaping (Result<FixtureEventsResponse, AFError>) -> Void) {
+        let eventURL = "\(eventBaseURL)?fixture=\(fixtureID)"
+
+        AF.request(eventURL, method: .get, headers: headers)
+            .validate()
+            .responseDecodable(of: FixtureEventsResponse.self) { response in
+                completion(response.result)
+            }
+    }
 }
+
 
 extension String {
     func formatDateString() -> String {

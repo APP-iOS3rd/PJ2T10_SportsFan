@@ -28,6 +28,7 @@
 		4E7EDCDB2B28404800C2732B /* OnboardingView1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7EDCDA2B28404800C2732B /* OnboardingView1.swift */; };
 		562BD4B82B297C6A00B5E2A3 /* MatchScheduleList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562BD4B72B297C6A00B5E2A3 /* MatchScheduleList.swift */; };
 		562BD4BA2B297C8C00B5E2A3 /* MatchScheduleItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562BD4B92B297C8C00B5E2A3 /* MatchScheduleItem.swift */; };
+		562BD4BC2B29D98300B5E2A3 /* EventApiModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562BD4BB2B29D98300B5E2A3 /* EventApiModel.swift */; };
 		56D234172B27E2D00077468D /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D234162B27E2D00077468D /* APIClient.swift */; };
 		56D234192B27E31C0077468D /* MatchScheduleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D234182B27E31C0077468D /* MatchScheduleViewModel.swift */; };
 		56D234212B2825190077468D /* StatisticsApiModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D234202B2825190077468D /* StatisticsApiModel.swift */; };
@@ -57,6 +58,7 @@
 		4E7EDCDA2B28404800C2732B /* OnboardingView1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView1.swift; sourceTree = "<group>"; };
 		562BD4B72B297C6A00B5E2A3 /* MatchScheduleList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MatchScheduleList.swift; path = SupportersAnchor/View/MatchScheduleList.swift; sourceTree = SOURCE_ROOT; };
 		562BD4B92B297C8C00B5E2A3 /* MatchScheduleItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchScheduleItem.swift; sourceTree = "<group>"; };
+		562BD4BB2B29D98300B5E2A3 /* EventApiModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventApiModel.swift; sourceTree = "<group>"; };
 		56D234162B27E2D00077468D /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		56D234182B27E31C0077468D /* MatchScheduleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchScheduleViewModel.swift; sourceTree = "<group>"; };
 		56D234202B2825190077468D /* StatisticsApiModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsApiModel.swift; sourceTree = "<group>"; };
@@ -191,6 +193,7 @@
 				56D234162B27E2D00077468D /* APIClient.swift */,
 				56D234222B2825A40077468D /* FixtureApiModel.swift */,
 				56D234202B2825190077468D /* StatisticsApiModel.swift */,
+				562BD4BB2B29D98300B5E2A3 /* EventApiModel.swift */,
 			);
 			path = Match;
 			sourceTree = "<group>";
@@ -281,6 +284,7 @@
 				3D4DF9AF2B27EA6200F7C655 /* FootballTeams.swift in Sources */,
 				3D4AF4022B26E4CD00D76FC5 /* SupportersAnchorApp.swift in Sources */,
 				562BD4BA2B297C8C00B5E2A3 /* MatchScheduleItem.swift in Sources */,
+				562BD4BC2B29D98300B5E2A3 /* EventApiModel.swift in Sources */,
 				56D234192B27E31C0077468D /* MatchScheduleViewModel.swift in Sources */,
 				3D7E48EA2B2853C7003224C1 /* Storage.swift in Sources */,
 				56D234172B27E2D00077468D /* APIClient.swift in Sources */,

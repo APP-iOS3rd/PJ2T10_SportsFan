@@ -9,8 +9,10 @@ import SwiftUI
 import WebKit
 
 struct NewsListView: View {
-    @ObservedObject var newsAPI = NewsAPI.shared
+    @ObservedObject private var newsAPI: NewsAPI = NewsAPI.shared
     @State private var selectedNewsURL: String?
+    
+    let qurey: String
 
     func removeTags(_ text: String) -> String {
         let processedText = text.replacingOccurrences(of: #"<(\/)?([a-zA-Z]*)(\s[a-zA-Z]*=[^>]*)?(\s)*(\/)?>"#, with: "", options: .regularExpression, range: nil).replacingOccurrences(of: "&quot;", with: "\"")
@@ -19,7 +21,6 @@ struct NewsListView: View {
     }
         
         var body: some View {
-            
             
             VStack {
                 List(newsAPI.newsList, id: \.self) { news in
@@ -35,8 +36,9 @@ struct NewsListView: View {
                                           selectedNewsURL = news.originallink
                                       }
                 }
-            }.onAppear() {
-                newsAPI.requestSearchNewsList(query: "Manchester United")
+            }
+            .onAppear {
+                newsAPI.requestSearchNewsList(query: qurey)
             }
         }
 
@@ -55,6 +57,6 @@ struct NewsListView: View {
 //    }
 }
 
-#Preview {
-    NewsListView()
-}
+//#Preview {
+//    NewsListView()
+//}

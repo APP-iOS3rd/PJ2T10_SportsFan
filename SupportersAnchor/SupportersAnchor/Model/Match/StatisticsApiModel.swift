@@ -17,17 +17,18 @@ struct StatisticsResponse: Codable {
 }
 
 struct StatisticsParameters: Codable {
-    let fixture: String
+    let fixture: String?
 }
 
-struct StatisticsData: Codable {
+struct StatisticsData: Codable, Identifiable {
+    let id = UUID()
     let team: TeamInfo
     let statistics: [Statistic]
     
     struct TeamInfo: Codable {
-        let id: Int
-        let name: String
-        let logo: String
+        let id: Int?
+        let name: String?
+        let logo: String?
     }
 }
 

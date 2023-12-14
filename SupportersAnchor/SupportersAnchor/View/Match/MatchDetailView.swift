@@ -18,57 +18,91 @@ struct ChartData : Identifiable{
 struct MatchDetailView: View {
     @EnvironmentObject private var viewModel: MatchScheduleViewModel
     let match: FixtureData
+    let matchId: Int
     
     var body: some View {
         NavigationStack{
-            VStack {
-                HStack {
-                    Text(match.fixture.date.formatDateString())
-                        .font(.headline)
-                        .foregroundColor(.black)
-                    Spacer()
-                }
-                
-                scoreDisplayBoard()
-                    .padding()
-                
-                Divider()
-                
-                displayBoard()
-                    .padding()
-                
-                Divider()
-                
-//                StatisBoard()
-//                    .padding()
-                Spacer()
-                
-            } //VStack
-            .padding()
+            ScrollView {
+                VStack(alignment: .center, spacing: 15) {
+                    HStack(alignment: .center, spacing: 0){
+                        Text(match.fixture.date.formatDateString())
+                            .font(.headline)
+                            .foregroundColor(.black)
+                        Spacer()
+                    }
+                    
+                    scoreDisplayBoard()
+                    
+                    Divider()
+                        .padding()
+                    
+                    displayBoard()
+                    
+                    Divider()
+                        .padding()
+                    
+                    timeLine()
+                    
+                    
+                } //VStack
+                .padding()
+            }
+        }
+        .onAppear {
+            viewModel.fetchEventssData(fixtureID: "\(matchId)")
         }
         //.navigationTitle(viewModel.selectedFixture.fixture.date)
     }
     
+    // MARK: - ViewBuilder
+    // ...
     // MARK: - scoreDisplayBoard
     // 경기 전광판
     @ViewBuilder
     private func scoreDisplayBoard() -> some View {
-        HStack{
-            AsyncImage(url: URL(string: match.teams.home.logo)) { image in
-                image
-                    .resizable()
-
-            } placeholder: {
-                Image(systemName: "arrow.circlepath")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .background(RoundedRectangle(cornerRadius: 25.0))
-                    .foregroundStyle(.gray)
-            }
-            .frame(width: 100, height: 140)
-
+        HStack {
+            // 홈
+            VStack {
+                // 로고
+                AsyncImage(url: URL(string: match.teams.home.logo)) { image in
+                    image
+                        .resizable()
+                } placeholder: {
+                    Image(systemName: "arrow.circlepath")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .background(RoundedRectangle(cornerRadius: 25.0))
+                        .foregroundStyle(.gray)
+                }
+                .frame(width: 100, height: 140) // 로고
+                
+                Spacer()
+                
+                // 득점
+                if viewModel.isInGoal(match.teams.home.name) {
+                    ForEach(viewModel.selectedFixturesEvents, id: \.id) { events in
+                        if let eventsType = events.type, eventsType == "Goal", events.team.name == match.teams.home.name  {
+                            HStack {
+                                if let elapsed = events.time.elapsed {
+                                    Text("\(elapsed)")
+                                        .font(.system(size: 12, weight: .regular))
+                                }
+                                if let _ = events.player.id {
+                                    Text(events.player.name ?? "")
+                                        .font(.system(size: 12, weight: .regular))
+                                        .lineLimit(1)
+                                }
+                            }.padding(.horizontal)
+                        }
+                    }
+                } else {
+                    Spacer()
+                } // 득점
+            } // VStack
+            
             Spacer()
             
+            // 스코어
             if let long = match.fixture.status.long, long == "Match Finished" {
                 Text("\(match.goals.home ?? 0) : \(match.goals.away ?? 0)")
                     .foregroundColor(.black)
@@ -82,27 +116,54 @@ struct MatchDetailView: View {
                     .fontWeight(.bold)
             }
             
-            
             Spacer()
             
-            AsyncImage(url: URL(string: match.teams.away.logo)) { image in
-                image
-                    .resizable()
-            } placeholder: {
-                Image(systemName: "arrow.circlepath")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .background(RoundedRectangle(cornerRadius: 25.0))
-                    .foregroundStyle(.gray)
-            }
-            .frame(width: 100, height: 140)
-            
-        }// HStack
+            // 어웨이
+            VStack {
+                // 로고
+                AsyncImage(url: URL(string: match.teams.away.logo)) { image in
+                    image
+                        .resizable()
+                } placeholder: {
+                    Image(systemName: "arrow.circlepath")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .background(RoundedRectangle(cornerRadius: 25.0))
+                        .foregroundStyle(.gray)
+                }
+                .frame(width: 100, height: 140) // 로고
+                
+                Spacer()
+                
+                // 득점
+                if viewModel.isInGoal(match.teams.away.name) {
+                    ForEach(viewModel.selectedFixturesEvents, id: \.id) { events in
+                        if let eventsType = events.type, eventsType == "Goal", events.team.name == match.teams.away.name  {
+                            HStack {
+                                if let elapsed = events.time.elapsed {
+                                    Text("\(elapsed)")
+                                        .font(.system(size: 12, weight: .regular))
+                                }
+                                if let _ = events.player.id {
+                                    Text(events.player.name ?? "")
+                                        .font(.system(size: 12, weight: .regular))
+                                        .lineLimit(1)
+                                }
+                            }.padding(.horizontal)
+                        }
+                    }
+                } else {
+                    Spacer()
+                } // 득점
+            } // VStack
+        }
+        .padding(.horizontal)
     }
     
+    // MARK: - displayBoard
     @ViewBuilder
     private func displayBoard() -> some View {
-        VStack(alignment: .center, spacing: 15) {
+        VStack(alignment: .center, spacing: 0) {
             if let referee = match.fixture.referee {
                 HStack {
                     Text("referee:")
@@ -119,37 +180,61 @@ struct MatchDetailView: View {
                     Text("location:")
                         .bold()
                     Spacer()
+                    Text(city)
                     
-                    VStack {
-                        
-                        Text(name)
-                        Text(city)
-                    }
                 }
                 .padding()
             }
-                        
-            if let home = viewModel.selectedFixtureStatistics.first, let away = viewModel.selectedFixtureStatistics.last {
-                HStack {
-                    ForEach(home.statistics, id: \.type) { stat in
-                        if let type = stat.type, let val = stat.value {
-                            Text("\(type): \(val)")
-                        }
-                    }
-                    
-                    ForEach(away.statistics, id: \.type) { stat in
-                        if let type = stat.type, let val = stat.value {
-                            Text("\(type): \(val)")
+        }
+        .padding(.horizontal)
+    }
+    
+    @ViewBuilder
+    private func timeLine() -> some View {
+        ScrollView(.horizontal) {
+            LazyHGrid(rows: [GridItem(.flexible())], spacing: 10) {
+                ForEach(viewModel.selectedFixturesEvents, id: \.id) { events in
+                    if let eventsType = events.type {
+                        VStack(alignment: .center, spacing: 5) {
+                            if let elapsed = events.time.elapsed {
+                                Text("\(elapsed)")
+                            } else if let _ = events.assist.id {
+                                Text("\(events.time.elapsed ?? 0)")
+                                    .font(.system(size: 12, weight: .regular))
+                                    .lineLimit(1)
+                            } else {
+                                Spacer()
+                            }
+                            
+                            if let _ = events.team.id {
+                                fetchImage(url: events.team.logo ?? "")
+                                    .lineLimit(1)
+                            } else {
+                                Spacer()
+                            }
+                            
+                            Text(eventsType)
+                            
+                            if let _ = events.assist.id {
+                                Text(events.assist.name ?? "")
+                                    .font(.system(size: 12, weight: .regular))
+                                    .lineLimit(1)
+                            } else {
+                                Spacer()
+                            }
+                            
+                            if let _ = events.player.id {
+                                Text(events.player.name ?? "")
+                                    .font(.system(size: 12, weight: .regular))
+                                    .lineLimit(1)
+                            } else {
+                                Spacer()
+                            }
                         }
                     }
                 }
-            } else {
-                Text("통계 미제공")
-            }
-            
-            //StatisBoard()
-        }
-        .padding()
+            }.padding(.horizontal)
+        }.padding(.horizontal)
     }
     
     // MARK: - StatisBoard
@@ -211,8 +296,22 @@ struct MatchDetailView: View {
         .padding()
         
     }
+    
+    // MARK: fetchImage
+    func fetchImage(url: String) -> some View {
+        ZStack{
+            RoundedRectangle(cornerRadius: 25.0)
+                .foregroundStyle(Color.white)
+            AsyncImage(url: URL(string: url)) { image in
+                image.resizable()
+            } placeholder: {
+                Image(systemName: "arrow.circlepath")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .padding()
+            }
+        }
+        .frame(width: 30, height: 30)
+    }
 }
 
-//#Preview {
-//    MatchDetailView()
-//}
