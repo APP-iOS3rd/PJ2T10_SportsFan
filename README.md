@@ -95,11 +95,8 @@
     - Rapid FootBall API: [Rapid FootBall API 문서](https://www.api-football.com/documentation-v3#section/Introduction)
       <br/>
       -  리그 선택: [leagues](https://www.api-football.com/documentation-v3#tag/Leagues/operation/get-leagues)
-      <br/>
       -  팀 선택: [teams](https://www.api-football.com/documentation-v3#tag/Teams/operation/get-teams)
-      <br/>
       -  경기일정: [fixtures](https://www.api-football.com/documentation-v3#tag/Fixtures/operation/get-fixtures)
-      <br/>
       -  경기정보: [events](https://www.api-football.com/documentation-v3#tag/Fixtures/operation/get-fixtures-events)
       <br/>
       
