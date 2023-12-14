@@ -81,7 +81,6 @@
   
 
 ## 5. 기술 스택
-<br/>
 
 - **사용한 기술 및 언어**
     - Swift, SwiftUI, Git, REST API, Alamofire
