@@ -63,6 +63,7 @@ class APIClient {
     }
 }
 
+
 extension String {
     func formatDateString() -> String {
         let dateFormatterInput = DateFormatter()
