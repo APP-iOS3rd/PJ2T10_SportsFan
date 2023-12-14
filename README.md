@@ -68,6 +68,7 @@
       
 ### 경기 일정
 <br/>
+
 ![메인에서경기일정](https://github.com/APP-iOS3rd/PJ2T10_SportsFan/assets/83914919/78297134-9447-4a8e-9dee-02a3fcf3091d) ![경기일정에서상세](https://github.com/APP-iOS3rd/PJ2T10_SportsFan/assets/83914919/6d95eacf-9427-4c79-a712-8bb3bb15f175)
 
 <br/>
