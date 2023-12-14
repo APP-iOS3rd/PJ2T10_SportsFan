@@ -11,7 +11,7 @@ import SwiftUI
 // 경기, 뉴스 등
 struct MatchScheduleView: View {
     @StateObject private var matchAPI = MatchScheduleViewModel()
-    @StateObject private var newsAPI = NewsAPI.shared
+    @StateObject private var newsAPI = NewsViewModel.shared
     
     var leagueID: String
     var teamID: String
@@ -24,7 +24,7 @@ struct MatchScheduleView: View {
                 return String(fixture.teams.away.name)
             }
         }
-        return "해외축구"
+        return "epl"
     }
     
     var ourTeamUrl: String {
@@ -81,14 +81,20 @@ struct MatchScheduleView: View {
                 mainMatchSchedule() // 경기 일정
                 
                 mainNews() // 뉴스
-                    .onAppear {
-                        newsAPI.requestSearchNewsList(query: ourTeamName)
-                    }
             }
             .padding()
         }
         .onAppear {
             matchAPI.moreFetch(leagueID: leagueID, season: "2023", teamID: teamID)
+            
+            Task {
+                do {
+                    try await  newsAPI.fetchPostNews(ourTeamName)
+                } catch (let error) {
+                    print("\(error)")
+                }
+            }
+
         }
     }
     
@@ -129,7 +135,6 @@ struct MatchScheduleView: View {
             
             NavigationLink(destination: MatchScheduleList()
                 .environmentObject(matchAPI)
-                           //.navigationTitle("경기일정")
             ) {
                 Text("더 보기")
                     .bold()
@@ -191,7 +196,7 @@ struct MatchScheduleView: View {
         
         // MARK: - 뉴스 리스트
         ForEach(newsAPI.newsList.prefix(4), id: \.self) { news in
-            Text(removeTags(news.title))
+            Text(news.title)
                 .lineLimit(1)
             
         } // ForEach
@@ -214,14 +219,6 @@ struct MatchScheduleView: View {
         }
         .frame(width: 20, height: 15)
     }
-    
-    // MARK: - removeTags
-    func removeTags(_ text: String) -> String {
-        let processedText = text.replacingOccurrences(of: #"<(\/)?([a-zA-Z]*)(\s[a-zA-Z]*=[^>]*)?(\s)*(\/)?>"#, with: "", options: .regularExpression, range: nil).replacingOccurrences(of: "&quot;", with: "\"")
-        
-        return processedText
-    }
-    
 }
 
 #Preview {

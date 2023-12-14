@@ -8,49 +8,53 @@
 import Foundation
 import Alamofire
 
-class NewsAPI: ObservableObject {
+class NewsAPI {
     static let shared = NewsAPI()
     
     private init() { }
     
-    @Published var newsList = [News]()
-
-    func requestSearchNewsList(query: String) {
-        let baseURL = "https://openapi.naver.com/v1/search/news.json"
+    static let everythingURL:String = "https://newsapi.org/v2/everything"
+    static let apiKey = ""
+    
+    static func RequestEverythingURL(q: String, from:String? = nil, to:String? = nil, language:String? = nil ,sortBy: String? = nil) -> URLRequest? {
         
-        let headers: HTTPHeaders = [
-            "X-Naver-Client-Id": Storage().naverClientID,
-            "X-Naver-Client-Secret": Storage().naverClientSecret,
-        ]
+        let url = URL(string: everythingURL)!
+        var components = URLComponents(url: url, resolvingAgainstBaseURL: true)
         
-        let parameters: Parameters = [
-            "query": query,
-            "display": 10,
-            "start": 1,
-            "sort": "sim",
-            "filter": "all"
-        ]
+        // 이제 파라미터 설정
+        var queryItems: [URLQueryItem] = []
+        queryItems.append(URLQueryItem(name: "q", value: q))
         
-        AF.request(baseURL,
-                   method: .get,
-                   parameters: parameters,
-                   encoding: URLEncoding.default,
-                   headers: headers)
-        .validate(statusCode: 200...500)
-        .responseDecodable(of: NewsList.self) { response in
-            switch response.result {
-            case .success(let data):
-                guard let statusCode = response.response?.statusCode else { return }
-                if statusCode == 200 {
-                    DispatchQueue.main.async {
-                        self.newsList = data.items
-                    }
-                    dump(data.items)
-                }
-                print("\(#file) > \(#function) :: SUCCESS")
-            case .failure(let error):
-                print("\(#file) > \(#function) :: FAILURE : \(error)")
-            }
+        // from
+        if let from = from {
+            queryItems.append(URLQueryItem(name: "from", value: from))
         }
+        
+        // to
+        if let to = to {
+            queryItems.append(URLQueryItem(name: "to", value: to))
+        }
+        
+        // language
+        if let language = language {
+            queryItems.append(URLQueryItem(name: "language", value: language))
+        }
+        
+        // sortBy
+        if let sortBy = sortBy {
+            queryItems.append(URLQueryItem(name: "sortBy", value: sortBy))
+        }
+        
+        // apiKey는 필수
+        queryItems.append(URLQueryItem(name: "apiKey", value: apiKey))
+        
+        components?.queryItems = queryItems
+        
+        // 마지막 체크
+        guard let requestURL = components?.url else {
+            fatalError("잘못된 URL")
+        }
+        
+        return URLRequest(url: requestURL)
     }
 }
