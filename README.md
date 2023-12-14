@@ -12,7 +12,8 @@
 
 ## 1. 앱소개
 
-![온보딩](https://github.com/APP-iOS3rd/PJ2T10_SportsFan/assets/83914919/41638b3a-78fd-4173-8c14-8cf0031a5abe)![팀셀렉에서메인](https://github.com/APP-iOS3rd/PJ2T10_SportsFan/assets/83914919/bb8b6e1a-9b45-45d3-a242-f678fac715b5)
+![온보딩](https://github.com/APP-iOS3rd/PJ2T10_SportsFan/assets/83914919/41638b3a-78fd-4173-8c14-8cf0031a5abe) ![returnSelection](https://github.com/APP-iOS3rd/PJ2T10_SportsFan/assets/83914919/72c3deb9-cbdd-4703-abdf-a51b36586b9d)
+
 
 <br/>
 
@@ -35,6 +36,12 @@
 
 ## 4. 핵심기능
 
+### 메인화면
+<br/>
+
+![new메인](https://github.com/APP-iOS3rd/PJ2T10_SportsFan/assets/83914919/b6856dfa-7593-4d7c-a400-bcb5e999d447)
+<br/>
+
 ### 리그 선택
 <br/>
 
@@ -50,8 +57,8 @@
 - 해당 리그 내에 소속된 팀들을 보여준 후 고객이 선택할 수 있도록 한다.
   
 ### 뉴스 
+![뉴스](https://github.com/APP-iOS3rd/PJ2T10_SportsFan/assets/83914919/6a2a7002-3a8f-475e-b0ba-650ba47f7901) ![뉴스 원본](https://github.com/APP-iOS3rd/PJ2T10_SportsFan/assets/83914919/7f490e89-7652-4c79-b478-e10d4d5eb0f6)
 
-![main_2](https://github.com/APP-iOS3rd/PJ2T10_SportsFan/assets/83914919/f6ec4852-bb57-49e3-a03d-4e4a8a4dc067)
 
 - 팀을 선택한 후 경기 일정, 기사, 경기 결과 등을 간편하게 확인할 수 있도록 한다.
 <br/>
@@ -61,8 +68,8 @@
       
 ### 경기 일정
 <br/>
-  
-![메인에서경기일정](https://github.com/APP-iOS3rd/PJ2T10_SportsFan/assets/83914919/866e3c4e-499b-417d-8e63-284b03d2d0ce) ![경기일정](https://github.com/APP-iOS3rd/PJ2T10_SportsFan/assets/83914919/d911486b-be07-42d2-91a5-98b149c3799d) 
+![메인에서경기일정](https://github.com/APP-iOS3rd/PJ2T10_SportsFan/assets/83914919/78297134-9447-4a8e-9dee-02a3fcf3091d) ![경기일정에서상세](https://github.com/APP-iOS3rd/PJ2T10_SportsFan/assets/83914919/6d95eacf-9427-4c79-a712-8bb3bb15f175)
+
 <br/>
 
 - 이번 달 최근 경기부터 앞으로의 남은 경기 일정을 확인 가능
