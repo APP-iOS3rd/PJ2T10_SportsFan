@@ -9,12 +9,11 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        NavigationView {
-            NewsListView()
-                .navigationBarTitle("뉴스")
-        }
-    }
-}
+         NavigationView {
+             NewsListView()
+                 .navigationBarTitle("뉴스")
+         }
+     }}
 
 #Preview {
     ContentView()

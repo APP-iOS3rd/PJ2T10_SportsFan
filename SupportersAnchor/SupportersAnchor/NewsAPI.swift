@@ -15,7 +15,7 @@ class NewsAPI: ObservableObject {
     
     @Published var newsList = [News]()
 
-    func requestSearchNewsList(query: String) {
+    func requestSearchNewsList() {
         let baseURL = "https://openapi.naver.com/v1/search/news.json"
         
         let headers: HTTPHeaders = [
@@ -24,7 +24,7 @@ class NewsAPI: ObservableObject {
         ]
         
         let parameters: Parameters = [
-            "query": query,
+            "query": "손흥민",
             "display": 10,
             "start": 1,
             "sort": "sim",

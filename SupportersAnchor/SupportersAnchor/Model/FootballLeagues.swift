@@ -18,20 +18,20 @@ struct FootballLeagues: Codable {
 
 // MARK: - Response
 struct LeagueResponse: Codable, Hashable {
-    let league: SelectLeague
-    let country: SelectCountry
-    let seasons: [SelectSeason]
+    let league: League
+    let country: Country
+    let seasons: [Season]
 }
 
 // MARK: - Country
-struct SelectCountry: Codable, Hashable {
+struct Country: Codable, Hashable {
     let name: String
     let code: String?
     let flag: String?
 }
 
 // MARK: - League
-struct SelectLeague: Codable, Hashable{
+struct League: Codable, Hashable{
     let id: Int
     let name: String
     let type: TypeEnum
@@ -44,16 +44,16 @@ enum TypeEnum: String, Codable {
 }
 
 // MARK: - Season
-struct SelectSeason:Codable, Hashable{
+struct Season:Codable, Hashable{
     let year: Int
     let start, end: String
     let current: Bool
-    let coverage: SelectCoverage
+    let coverage: Coverage
 }
 
 // MARK: - Coverage
-struct SelectCoverage: Codable, Hashable{
-    let fixtures: SelectFixtures
+struct Coverage: Codable, Hashable{
+    let fixtures: Fixtures
     let standings, players, topScorers, topAssists: Bool
     let topCards, injuries, predictions, odds: Bool
 
@@ -67,7 +67,7 @@ struct SelectCoverage: Codable, Hashable{
 }
 
 // MARK: - Fixtures
-struct SelectFixtures: Codable, Hashable{
+struct Fixtures: Codable, Hashable{
     let events, lineups, statisticsFixtures, statisticsPlayers: Bool
 
     enum CodingKeys: String, CodingKey {

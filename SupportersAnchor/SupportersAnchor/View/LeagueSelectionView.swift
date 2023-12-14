@@ -9,7 +9,6 @@ import SwiftUI
 
 struct LeagueSelectionView: View {
     @StateObject var leagueSelectionVM = LeagueSelectionViewModel()
-    @State var leagueID : Int?
     var gridItems: [GridItem] = [
                         GridItem(),
                         GridItem(),
@@ -33,7 +32,7 @@ struct LeagueSelectionView: View {
                     LazyVGrid(columns: gridItems){
                         ForEach(leagueSelectionVM.footballLeagueList, id: \.self){ leagues in
                             NavigationLink{
-                                TeamSelectionView(leagueID: leagues.league.id)
+                                
                             }label:{
                                 TeamSelectionViewItem(url: leagues.league.logo, name: leagues.league.name)
                             }
@@ -49,8 +48,6 @@ struct LeagueSelectionView: View {
                 leagueSelectionVM.getLeagues()
             }
         }// NavigationStack
-        .navigationBarBackButtonHidden(true)
-        .tint(.black)
         
         
     }
