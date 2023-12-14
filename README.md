@@ -12,7 +12,7 @@
 
 ## 1. 앱소개
 
-![온보딩](https://github.com/APP-iOS3rd/PJ2T10_SportsFan/assets/83914919/41638b3a-78fd-4173-8c14-8cf0031a5abe) ![returnSelection](https://github.com/APP-iOS3rd/PJ2T10_SportsFan/assets/83914919/72c3deb9-cbdd-4703-abdf-a51b36586b9d)
+![뉴 온보딩](https://github.com/APP-iOS3rd/PJ2T10_SportsFan/assets/83914919/5d995c42-2248-4cd1-9c32-a74db2f4bfc4) ![returnSelection](https://github.com/APP-iOS3rd/PJ2T10_SportsFan/assets/83914919/72c3deb9-cbdd-4703-abdf-a51b36586b9d)
 
 
 <br/>
