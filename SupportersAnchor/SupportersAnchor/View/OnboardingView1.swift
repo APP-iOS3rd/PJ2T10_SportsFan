@@ -30,7 +30,7 @@ struct OnboardingView1: View {
                             .frame(width: 200)
                             .background(Color("appColor"))
                             .cornerRadius(10)
-                }
+                    }
             }
         }
     }

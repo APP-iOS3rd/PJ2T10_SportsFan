@@ -20,12 +20,17 @@ class APIClient {
     ]
     
     // MARK: - fetchFixtures
-    func fetchFixtures(leagueID: String, season: String, teamID: String, completion: @escaping (Result<FixtureResponse, AFError>) -> Void) {
-        let parameters: [String: Any] = [
+    func fetchFixtures(leagueID: String, season: String, teamID: String, from: String? = nil, to: String? = nil, completion: @escaping (Result<FixtureResponse, AFError>) -> Void) {
+        var parameters: [String: Any] = [
             "league": leagueID,
             "season": season,
             "team": teamID
         ]
+        
+        if let fromDate = from, let toDate = to {
+            parameters["from"] = fromDate
+            parameters["to"] = toDate
+        }
         
         AF.request(fixturesBaseURL, method: .get, parameters: parameters, headers: headers)
             .validate()
