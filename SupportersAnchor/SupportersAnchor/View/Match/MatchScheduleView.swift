@@ -12,6 +12,7 @@ import SwiftUI
 struct MatchScheduleView: View {
     @StateObject private var matchAPI = MatchScheduleViewModel()
     @StateObject private var newsAPI = NewsViewModel.shared
+    @State private var showingConfirmation = false
     
     var leagueID: String
     var teamID: String
@@ -73,6 +74,24 @@ struct MatchScheduleView: View {
                         .font(.title)
                         .bold()
                         .lineLimit(1)
+                    Spacer()
+                        
+                    
+                    Button{
+                        showingConfirmation.toggle()
+                    } label: {
+                        Text("다시 선택")
+                            .font(.title3)
+                            .fontWeight(.semibold)
+                            .foregroundStyle(.black)
+                    }.confirmationDialog("화면을 선택해주세요", isPresented: $showingConfirmation) { 
+                        NavigationLink("팀 선택으로 이동"){ TeamSelectionView(leagueID: Int(leagueID) ?? 39)}
+                        
+                        NavigationLink("리그 선택으로 이동") { LeagueSelectionView() }
+                    } message:{
+                        Text("다시 선택할 팀 혹은 리그")
+                    }
+                    
                 }
                 .padding()
 
