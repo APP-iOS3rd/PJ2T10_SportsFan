@@ -11,7 +11,7 @@ struct OnboardingView1: View {
     var body: some View {
         NavigationView{
                 VStack {
-                    Image("SoccerBall")
+                    Image("Ball")
                     Text("우린 서포터즈입니다.")
                         .font(.system(size: 30, weight: .bold))
                         .foregroundColor(Color(.appPurple))
