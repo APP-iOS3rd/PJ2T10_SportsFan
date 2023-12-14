@@ -9,7 +9,8 @@ import SwiftUI
 
 struct TeamSelectionView: View {
     @StateObject var teamSelectionVM = TeamSelectionViewModel()
-    
+    @State var teamID : Int?
+    var leagueID: Int
     var gridItems: [GridItem] = [
                         GridItem(),
                         GridItem(),
@@ -33,7 +34,8 @@ struct TeamSelectionView: View {
                     LazyVGrid(columns: gridItems){
                         ForEach(teamSelectionVM.footballTeamList, id: \.self){ teams in
                             NavigationLink{
-                                
+                                MatchScheduleView(leagueID: "\(leagueID)", teamID: "\(teams.team.id)")
+                                    .navigationBarBackButtonHidden(true)
                             }label:{
                                 TeamSelectionViewItem(url: teams.team.logo, name: teams.team.name)
                             }
@@ -46,7 +48,8 @@ struct TeamSelectionView: View {
                 
             }//ScrollView
             .onAppear{
-                    teamSelectionVM.getTeams(leagueId: 39)
+                    teamSelectionVM.getTeams(leagueId: leagueID)
+                    print("leagueID: ",leagueID)
             }
         }// NavigationStack
         
@@ -55,5 +58,5 @@ struct TeamSelectionView: View {
 }
 
 #Preview {
-    TeamSelectionView()
+    TeamSelectionView(leagueID: 39)
 }

@@ -12,6 +12,9 @@ class LeagueSelectionViewModel: ObservableObject{
     
     @Published var footballLeagueList  = [LeagueResponse]()
     
+    func getLeagueID(league: LeagueResponse) -> Int{
+        return league.league.id
+    }
     
     func getLeagues(){
         
