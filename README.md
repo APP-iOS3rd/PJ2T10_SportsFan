@@ -14,7 +14,7 @@
 
 ## 1. 앱소개
 
-![토트넘 메인](https://github.com/APP-iOS3rd/PJ2T10_SportsFan/assets/83914919/3c3fbbcc-81e4-4164-9654-9e04ce32d064) ![경기일정](https://github.com/APP-iOS3rd/PJ2T10_SportsFan/assets/83914919/e1e8563a-d537-400f-bfae-80dea0e421c4)
+![온보딩](https://github.com/APP-iOS3rd/PJ2T10_SportsFan/assets/83914919/41638b3a-78fd-4173-8c14-8cf0031a5abe)![팀셀렉에서메인](https://github.com/APP-iOS3rd/PJ2T10_SportsFan/assets/83914919/bb8b6e1a-9b45-45d3-a242-f678fac715b5)
 
 <br/>
 
@@ -75,14 +75,15 @@
 ## 5. 기술 스택
 
 - **사용한 기술 및 언어**
-    - Swift, SwiftUI, Git, REST API
+    - Swift, SwiftUI, Git, REST API, Alamofire
 - **개발 환경**
     - Xcode 15
 - **API**
     - Rapid FootBall API
-    - [API](https://www.api-football.com/documentation-v3#section/Introduction)
+    - [API 문서](https://www.api-football.com/documentation-v3#section/Introduction)
 
 
+## 6. etc
 [노션](https://www.notion.so/LAB-10-035cf37f66824ac2b702bb10cc28319f?pvs=4)
 <br/>
 
