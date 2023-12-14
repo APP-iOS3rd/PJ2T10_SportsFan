@@ -14,11 +14,11 @@ struct OnboardingView: View {
                     Spacer()
                     Text("Ducks")
                         .font(.system(size: 50, weight: .bold))
-                        .foregroundColor(Color("appColor"))
+                        .foregroundColor(Color(.appPurple))
                     Text("해외축구 서포터즈를 위한 정보 앱")
                         .padding()
                         .font(.system(size: 30, weight: .bold))
-                        .foregroundColor(Color("appColor"))
+                        .foregroundColor(Color(.appPurple))
                         .multilineTextAlignment(.center)
                     
                     Spacer()
@@ -30,7 +30,7 @@ struct OnboardingView: View {
                             .padding()
                             .frame(width: 200)
                             .foregroundColor(.white)
-                            .background(Color("appColor"))
+                            .background(Color(.appPurple))
                             .cornerRadius(10)
                 }
             }

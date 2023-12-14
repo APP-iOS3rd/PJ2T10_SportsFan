@@ -14,11 +14,11 @@ struct OnboardingView1: View {
                     Image("SoccerBall")
                     Text("우린 서포터즈입니다.")
                         .font(.system(size: 30, weight: .bold))
-                        .foregroundColor(Color("appColor"))
+                        .foregroundColor(Color(.appPurple))
                     Text("좋아하는 축구팀을 팔로우 하세요!")
                         .padding()
                         .font(.system(size: 30, weight: .bold))
-                        .foregroundColor(Color("appColor"))
+                        .foregroundColor(Color(.appPurple))
                         .multilineTextAlignment(.center)
                     
                     Spacer()
@@ -28,7 +28,7 @@ struct OnboardingView1: View {
                             .font(.system(size: 30, weight: .bold))
                             .foregroundColor(.white)
                             .frame(width: 200)
-                            .background(Color("appColor"))
+                            .background(Color(.appPurple))
                             .cornerRadius(10)
                     }
             }
