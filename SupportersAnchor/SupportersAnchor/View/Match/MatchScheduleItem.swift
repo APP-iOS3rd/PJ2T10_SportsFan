@@ -59,6 +59,7 @@ struct MatchScheduleItem: View {
         .padding(.horizontal)
     }
     
+    // MARK: - fetchImage
     func fetchImage(url: String) -> some View {
         ZStack{
             RoundedRectangle(cornerRadius: 25.0)

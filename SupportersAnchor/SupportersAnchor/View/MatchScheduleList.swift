@@ -22,8 +22,8 @@ struct MatchScheduleList: View {
                                 viewModel.selectFixture(fixture: match)
                             }) {
                                 NavigationLink(
-                                    destination: MatchDetailView(match: match)
-                                        .environmentObject(MatchScheduleViewModel())
+                                    destination: MatchDetailView(match: match, matchId: match.fixture.id)
+                                        .environmentObject(viewModel)
                                 ) {
                                     MatchScheduleItem(fixture: match)
                                 }

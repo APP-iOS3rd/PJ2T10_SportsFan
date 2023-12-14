@@ -95,7 +95,7 @@ struct MatchScheduleView: View {
     private func recentMatch() -> some View {
         // MARK: - header
         HStack(alignment: .center, spacing: 5) {
-            Text("이번 주 매치")
+            Text("최근 매치")
                 .font(.title)
                 .bold()
             Spacer()
@@ -176,9 +176,7 @@ struct MatchScheduleView: View {
             
             Spacer()
             
-            NavigationLink(destination: NewsListView()
-            
-            ) {
+            NavigationLink(destination: NewsListView()) {
                 Text("더 보기")
                     .bold()
                     .foregroundColor(.black)
@@ -222,50 +220,6 @@ struct MatchScheduleView: View {
     }
     
 }
-
-//struct MatchSatis: View {
-//    @EnvironmentObject private var viewModel: MatchScheduleViewModel
-//    
-//    var body: some View {
-//        VStack(alignment: .center, spacing: 10) {
-//            if let home = viewModel.selectedFixtureStatistics.first, let away = viewModel.selectedFixtureStatistics.last {
-//                HStack {
-//                    fetchImage(url: home.team.logo)
-//                    
-//                    fetchImage(url: away.team.logo)
-//                }
-//                
-//                HStack {
-//                    //                    ForEach(home.statistics, id: \.type) { stat in
-//                    //                        Text(stat.type)
-//                    //                    }
-//                    //
-//                    //                    ForEach(away.statistics, id: \.type) { stat in
-//                    //                        Text(stat.type)
-//                    //                    }
-//                }
-//            } else {
-//                Text("통계 미제공")
-//            }
-//        }
-//    }
-//    
-//    func fetchImage(url: String) -> some View {
-//        ZStack{
-//            RoundedRectangle(cornerRadius: 25.0)
-//                .foregroundStyle(Color.white)
-//            AsyncImage(url: URL(string: url)) { image in
-//                image.resizable()
-//            } placeholder: {
-//                Image(systemName: "arrow.circlepath")
-//                    .resizable()
-//                    .aspectRatio(contentMode: .fit)
-//                    .padding()
-//            }
-//        }
-//        .frame(width: 96, height: 129)
-//    }
-//}
 
 #Preview {
     MatchScheduleView(leagueID: "39", teamID: "33")

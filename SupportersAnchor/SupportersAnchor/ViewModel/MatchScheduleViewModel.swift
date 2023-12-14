@@ -14,6 +14,8 @@ class MatchScheduleViewModel: ObservableObject {
     @Published var selectedFixtureID: String?
     @Published var selectedFixtureStatistics: [StatisticsData] = []
     
+    @Published var selectedFixturesEvents: [FixtureEvent] = []
+    
     // MARK: - MatchSchedule 관련
     // ...
     // MARK: - moreFetch
@@ -49,6 +51,7 @@ class MatchScheduleViewModel: ObservableObject {
     func selectFixture(fixture: FixtureData) {
         selectedFixtureID = String(fixture.fixture.id)
         fetchStatisticsData(fixtureID: selectedFixtureID)
+        fetchEventssData(fixtureID: selectedFixtureID)
     }
     
     // MARK: - fetchStatisticsData
@@ -67,5 +70,33 @@ class MatchScheduleViewModel: ObservableObject {
                 print("통계 에러: \(error.localizedDescription)")
             }
         }
+    }
+    
+    // MARK: - events
+    func fetchEventssData(fixtureID: String?) {
+        guard let fixtureID = fixtureID else {
+            return
+        }
+        
+        APIClient.shared.fetchEvent(fixtureID: fixtureID) { result in
+            switch result {
+            case .success(let FixtureEventsResponse):
+                self.selectedFixturesEvents = FixtureEventsResponse.response
+                print("성공")
+                
+            case .failure(let error):
+                print("에러: \(error.localizedDescription)")
+            }
+        }
+    }
+    
+    // MARK: - isInGoal
+    func isInGoal(_ name: String) -> Bool {
+        for events in selectedFixturesEvents {
+            if events.type == "Goal" && events.team.name == name {
+                return true
+            }
+        }
+        return false
     }
 }
