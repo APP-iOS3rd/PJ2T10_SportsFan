@@ -16,7 +16,7 @@ class TeamSelectionViewModel : ObservableObject{
         
         guard let url = URL(string:"https://api-football-v1.p.rapidapi.com/v3/teams?league=\(leagueId)&season=2023") else { return  }
         
-        let headers : HTTPHeaders = ["X-RapidAPI-Key" : "5a037acc15msh4cbb6c53e88088bp11fc3ejsn93a49e9e121c",
+        let headers : HTTPHeaders = ["X-RapidAPI-Key" : "",
                              "X-RapidAPI-Host" : "api-football-v1.p.rapidapi.com"]
         
         AF.request(
