@@ -14,7 +14,8 @@ class NewsAPI {
     private init() { }
     
     static let everythingURL:String = "https://newsapi.org/v2/everything"
-    static let apiKey = ""
+    static var apiKey : String = getApiKey("NEWS_API_KEY")
+
     
     static func RequestEverythingURL(q: String, from:String? = nil, to:String? = nil, language:String? = nil ,sortBy: String? = nil) -> URLRequest? {
         

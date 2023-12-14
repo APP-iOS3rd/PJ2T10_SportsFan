@@ -14,9 +14,11 @@ class APIClient {
     private let fixturesBaseURL = "https://api-football-v1.p.rapidapi.com/v3/fixtures"
     private let statisticsBaseURL = "https://api-football-v1.p.rapidapi.com/v3/fixtures/statistics"
     private let eventBaseURL = "https://api-football-v1.p.rapidapi.com/v3/fixtures/events"
-
+    
+    static var apiKey: String = getApiKey("API_KEY")
+    
     private let headers: HTTPHeaders = [
-        "X-RapidAPI-Key": "",
+        "X-RapidAPI-Key": "\(apiKey)",
         "X-RapidAPI-Host": "api-football-v1.p.rapidapi.com"
     ]
     

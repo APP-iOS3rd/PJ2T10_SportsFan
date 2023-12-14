@@ -19,9 +19,11 @@ class LeagueSelectionViewModel: ObservableObject{
     func getLeagues(){
         
         guard let url = URL(string:"https://api-football-v1.p.rapidapi.com/v3/leagues?season=2023&current=true") else { return  }
-    
         
-        let headers : HTTPHeaders = ["X-RapidAPI-Key" : "",
+        let apiKey = getApiKey("API_KEY")
+        print("apiKey: \(apiKey)")
+        
+        let headers : HTTPHeaders = ["X-RapidAPI-Key" : "\(apiKey)",
                              "X-RapidAPI-Host" : "api-football-v1.p.rapidapi.com"]
         
         AF.request(

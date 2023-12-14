@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<!--
-   Info.plist
-   SupportersAnchor
-
-   Created by 최준현 on 12/12/23.
-   Copyright (c) 2023 ___ORGANIZATIONNAME___. All rights reserved.
--->
 <plist version="1.0">
-<dict/>
+<dict>
+	<key>API_KEY</key>
+	<string>$(API_KEY)</string>
+	<key>NEWS_API_KEY</key>
+	<string>$(NEWS_API_KEY)</string>
+</dict>
 </plist>
