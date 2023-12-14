@@ -42,17 +42,6 @@ class APIClient {
             }
     }
     
-    // MARK: - fetchStatistics
-    func fetchStatistics(fixtureID: String, completion: @escaping (Result<StatisticsResponse, AFError>) -> Void) {
-         let statisticsURL = "\(statisticsBaseURL)?fixture=\(fixtureID)"
-         
-         AF.request(statisticsURL, method: .get, headers: headers)
-             .validate()
-             .responseDecodable(of: StatisticsResponse.self) { response in
-                 completion(response.result)
-             }
-     }
-    
     // MARK: - fetchEvent
     func fetchEvent(fixtureID: String, completion: @escaping (Result<FixtureEventsResponse, AFError>) -> Void) {
         let eventURL = "\(eventBaseURL)?fixture=\(fixtureID)"

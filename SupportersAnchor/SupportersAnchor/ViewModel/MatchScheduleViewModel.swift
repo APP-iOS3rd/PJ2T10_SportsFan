@@ -12,8 +12,6 @@ class MatchScheduleViewModel: ObservableObject {
     @Published var fixtures: [FixtureData] = []
     
     @Published var selectedFixtureID: String?
-    @Published var selectedFixtureStatistics: [StatisticsData] = []
-    
     @Published var selectedFixturesEvents: [FixtureEvent] = []
     
     // MARK: - MatchSchedule 관련
@@ -50,26 +48,7 @@ class MatchScheduleViewModel: ObservableObject {
     // MARK: - selectFixture
     func selectFixture(fixture: FixtureData) {
         selectedFixtureID = String(fixture.fixture.id)
-        fetchStatisticsData(fixtureID: selectedFixtureID)
         fetchEventssData(fixtureID: selectedFixtureID)
-    }
-    
-    // MARK: - fetchStatisticsData
-    func fetchStatisticsData(fixtureID: String?) {
-        guard let fixtureID = fixtureID else {
-            return
-        }
-        
-        APIClient.shared.fetchStatistics(fixtureID: fixtureID) { result in
-            switch result {
-            case .success(let statisticsResponse):
-                self.selectedFixtureStatistics = statisticsResponse.response
-                print("통계 성공")
-                
-            case .failure(let error):
-                print("통계 에러: \(error.localizedDescription)")
-            }
-        }
     }
     
     // MARK: - events
