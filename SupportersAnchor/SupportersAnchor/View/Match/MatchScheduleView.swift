@@ -24,7 +24,7 @@ struct MatchScheduleView: View {
                 return String(fixture.teams.away.name)
             }
         }
-        return ""
+        return "해외축구"
     }
     
     var ourTeamUrl: String {
@@ -47,7 +47,7 @@ struct MatchScheduleView: View {
         case "39":
             return "울버햄프턴 원더러스"
         default:
-            return  "EPL"
+            return  "해외축구"
         }
     }
     
@@ -81,12 +81,14 @@ struct MatchScheduleView: View {
                 mainMatchSchedule() // 경기 일정
                 
                 mainNews() // 뉴스
+                    .onAppear {
+                        newsAPI.requestSearchNewsList(query: ourTeamName)
+                    }
             }
             .padding()
         }
         .onAppear {
             matchAPI.moreFetch(leagueID: leagueID, season: "2023", teamID: teamID)
-            newsAPI.requestSearchNewsList(query: newsQuery)
         }
     }
     
@@ -176,7 +178,8 @@ struct MatchScheduleView: View {
             
             Spacer()
             
-            NavigationLink(destination: NewsListView()) {
+            NavigationLink(destination: NewsListView(qurey: ourTeamName)
+                .environmentObject(newsAPI)) {
                 Text("더 보기")
                     .bold()
                     .foregroundColor(.black)
