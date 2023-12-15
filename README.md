@@ -1,6 +1,5 @@
 # PJ2T10_SportsFan
 
-축구 서포터즈들을 위한 정보 앱
 <br/>
 
 <aside>
@@ -13,7 +12,7 @@
 - 팀장: 최준현
 - 팀원: 박호건, 변정훈, 오성준, 이경헌, 정민규
 
-## 1. 앱소개
+## 1. 앱 소개: 축구 서포터즈들을 위한 정보 앱
 
 ![뉴 온보딩](https://github.com/APP-iOS3rd/PJ2T10_SportsFan/assets/83914919/5d995c42-2248-4cd1-9c32-a74db2f4bfc4) ![returnSelection](https://github.com/APP-iOS3rd/PJ2T10_SportsFan/assets/83914919/72c3deb9-cbdd-4703-abdf-a51b36586b9d)
 
