@@ -1,7 +1,8 @@
 # PJ2T10_SportsFan
 
-##
+## 축구 서포터즈들을 위한 정보 앱
 <aside>
+
 💡 특정 팀을 대상으로 소위 ‘덕질’을 가능케 하는 앱
 
 </aside>
@@ -94,8 +95,7 @@
       -  팀 선택: [teams](https://www.api-football.com/documentation-v3#tag/Teams/operation/get-teams)
       -  경기일정: [fixtures](https://www.api-football.com/documentation-v3#tag/Fixtures/operation/get-fixtures)
       -  경기정보: [events](https://www.api-football.com/documentation-v3#tag/Fixtures/operation/get-fixtures-events)
-      <br/>
-      
+        
     - newsapi: [newsapi API 문서](https://newsapi.org/)
       - 뉴스기사: [everything](https://newsapi.org/docs/endpoints/everything)
 
